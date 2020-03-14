@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+
+<html>
+<body>
+        <form id="launchForm" action="https://handlers.education.launchcode.org/request-parrot" method="POST">
+        <label>Test Name<input id="testName" type="text" name="testName"/></label><br/>
+        <label>Test Date<input id="testDate" type="date" name="testDate"></label><br/>
+        <label>Rocket Type
+            <select id = "rocketType" name ="rocketType">
+                <option value="">User must select a rocket Model</option>
+                <option value="Brandt">Brandt</option>
+                <option value="Lynx">Lynx</option>
+                <option value="Orion">Orion</option>
+                <option value="Terrier">Terrier</option>
+            </select>
+        </label><br/>
+        <label>Number of Rocket Boosters<input id ="numBoosters" type="number" name="boosterCount" min=0 max=8> </label><br/>
+        Wind Rating<br/>
+        <label>No Wind<input id = "r1" type="radio" name="windRating" value=0 ></label><br/>
+        <label>Mild<input id = "r2" type="radio" name="windRating" value=10></label><br/>
+        <label>Strong<input id = "r3" type="radio" name="windRating" value=20></label><br/>
+        <label>Use production grade servers<input id = "productionGrade" name ="productionServers" type="checkbox"></label><br/>
+        <button>Run Simulation</button>
+    </form>
+    </body>
+    <script>
+        window.addEventListener("load", function (){
+            console.log ("document loaded");
+            let launchForm = document.getElementById("launchForm");
+            launchForm.addEventListener("submit", function(){
+                let testName = document.getElementById("testName");
+                let testDate = document.getElementById("testDate");
+                let rocketType = document.getElementById('rocketType');
+                let numBoosters = document.getElementById('numBoosters');
+                let r1 = document.getElementById('r1').checked;
+                console.log (r1.value);
+                let r2 = document.getElementById('r2').checked;
+                let r3 = document.getElementById('r3').checked;
+                let productionGrade = document.getElementById('productionGrade').checked;
+                if (testName.value === ""||testDate.value===""||rocketType.value===""||(r1===false&&r2===false&&r3===false)||numBoosters.value===""||productionGrade===false){
+                    alert("All values MUST be assigned");
+                    event.preventDefault();
+                }
+            })
+        })
+    </script>
+</html>
